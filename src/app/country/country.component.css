@@ -1,0 +1,371 @@
+#searchCountry{
+    position: relative;
+    animation: fadeinout 1.2s;
+}
+
+#worldtimelineRow{
+    animation: fadeinout 1.2s;
+}
+
+#topics{
+    animation: fadeinout 1.2s;
+}
+
+@keyframes fadeinout {
+    0% { opacity: 0; }
+    25% { opacity: 0.25; }
+    50% { opacity: 0.5; }
+    75% { opacity: 0.75; }
+    100% { opacity: 1; }
+  }
+
+#W{
+    animation: fadeinW 1.2s;
+}
+
+#O{
+    animation: fadeinO 2.4s;
+}
+
+#R{
+    animation: fadeinR 3.6s;
+}
+
+#L{
+    animation: fadeinL 4.8s;
+}
+
+#D{
+    animation: fadeinD 6.0s;
+}
+
+#WW{
+    animation: fadeinWW 7.2s;
+}
+
+#I{
+    animation: fadeinI 8.4s;
+}
+
+#DD{
+    animation: fadeinDD 9.6s;
+}
+
+#E{
+    animation: fadeinE 10.8s;
+}
+
+@keyframes fadeinW {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinO {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinR {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinL {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinD {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinWW {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinI {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinDD {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeinE {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+
+/* #worldwide{
+    position: relative;
+    animation: moveTitle 1.2s;
+} */
+
+/* @keyframes moveTitle{
+    from{right: -15px}
+    to{right: 0}
+} */
+
+@keyframes moveSearchCountry{
+    from{bottom: -15px}
+    to{bottom: 0px}
+}
+
+.menu-scroll {
+    overflow-y: scroll;
+    height: 620px;
+    font-size: large;
+  }
+
+  /* @media only screen and (min-width: 320px)  { #worldwide{ font-size: x-small; } }
+  @media only screen and (min-width: 768px)  { #worldwide{ font-size: small; } }
+  @media only screen and (min-width: 1024px) { #worldwide{ font-size: medium; } }
+  @media only screen and (min-width: 1900px) { #worldwide{ font-size: large; } } */
+
+  @media only screen and (max-width: 600px){
+    .table-responsive {
+        max-height:300px;
+        
+    }
+    #worldtimeline{
+        width: 50%;
+    }
+    #yestdiff{
+        float: right;
+        font-size: large !important;
+    }
+  }
+
+  /* width */
+::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #0b0b0d;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0b0b0d;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0b0b0d;
+  }
+
+  @media only screen and (min-width: 320px){
+      #worldwide{
+          font-size: small;
+      }
+    #divinfo{
+        margin-top: 3%;
+    }
+    .col-sm-4{
+        margin-top: 3%;
+    }
+    .col-sm-6{
+        margin-top: 3%;
+    }
+    #card{
+        width: 50%;
+        /* min-height: 200px !important; */
+    }
+    #worlddata{
+        width: 50%;
+    }
+    /* #today{
+        width: 33%;
+    } */
+    #timelinetype{
+        width: 10%;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    #worldwide{
+        font-size: medium;
+    }
+    #divinfo{
+        margin-top: 3%;
+    }
+    .col-sm-4{
+        margin-top: 3%;
+    }
+    .col-sm-6{
+        margin-top: 3%;
+    }
+    #card{
+        width: 50%;
+        /* min-height: 200px !important; */
+    }
+    #worlddata{
+        width: 50%;
+    }
+    /* #today{
+        width: 33%;
+    } */
+    #timelinetype{
+        width: 10%;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    #worldwide{
+        font-size: large;
+    }
+    #divinfo{
+        margin-top: 3%;
+    }
+    .col-sm-4{
+        margin-top: 3%;
+    }
+    .col-sm-6{
+        margin-top: 3%;
+    }
+    #card{
+        width: 50%;
+        /* min-height: 200px !important; */
+    }
+    #worlddata{
+        width: 50%;
+    }
+    /* #today{
+        width: 33%;
+    } */
+    #timelinetype{
+        width: 10%;
+    }
+}
+
+@media only screen and (min-width: 1900px){
+    #worldwide{
+        font-size: x-large;
+    }
+    #divinfo{
+        margin-top: 3%;
+    }
+    .col-sm-4{
+        margin-top: 3%;
+    }
+    .col-sm-6{
+        margin-top: 3%;
+    }
+    #card{
+        width: 50%;
+        /* min-height: 200px !important; */
+    }
+    #worlddata{
+        width: 50%;
+    }
+    /* #today{
+        width: 33%;
+    } */
+    #timelinetype{
+        width: 10%;
+    }
+}
+
+.table-responsive {
+    max-height:auto;
+}
+
+.card-title{
+color: #6c757d; 
+font-family: RobotoDraft,Roboto, Helvetica Neue, Helvetica, Arial,sans-serif;
+}
+
+.card-text{
+    color: #6c757d;
+}
+
+/* #globe{
+    animation: rotateGlobe 1.2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotateGlobe{
+    10%{transform: rotate(36deg) translate(0px, 5px);}
+} */
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.table > thead > tr > td {
+    vertical-align: middle;
+}
+
+.btn-dark {
+    color: #adb5bd;
+    background-color: #212529;
+    border-color: #212529;
+}
+
+#topTenCountriesButton{
+    width: 100%; 
+    height: 40px; 
+    text-align: left;
+    margin: 2%; 
+    color: #adb5bd; 
+    background-color: #0b0c0c;
+    border-color: #191d21
+}
+
+#indiaPatient{
+    width: 100%; 
+    height: 40px; 
+    text-align: left;
+    margin-top: 1%; 
+    color: #adb5bd; 
+    background-color: #0b0c0c;
+    border-color: #0f1010
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #00336b;
+    border-color: #00336b;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #00336b;
+    border-color: #00336b;
+}
+
+.btn-primary:active {
+    color: #fff;
+    background-color: #00336b;
+    border-color: #00336b;
+}
+
+.alert-dark {
+    color: #6c757d;
+    background-color: #0c0c0c;
+    border-color: #212529;
+}
+
+.alert-dark:hover {
+    color: white;
+    background-color: #0c0c0c;
+    border-color: #212529;
+}
+
+/* .show{
+    opacity: 1 !important;
+    }
+    .step{
+    opacity: 0;
+    transition: .70s ease-in-out all;
+    } */
+
+    
+

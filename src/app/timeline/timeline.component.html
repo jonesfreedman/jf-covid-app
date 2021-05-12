@@ -1,0 +1,29 @@
+<!-- <div *ngIf="event">
+    <br>
+    <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+        Timeline <span style="font-size: small">(Last 14 days.)</span>
+    </h6>
+    {{ getData(event) }}
+    <br>
+    <div *ngIf="countryDetailsModel">
+        <table class="table table-hover table-borderless table-dark table-sm"
+            style="background-color: #0c0c0e; color: #6c757d;">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Confirmed</th>
+                    <th scope="col">Recovered</th>
+                    <th scope="col">Death</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let country of countryDetailsModel.data.timeline | slice: 0: limit">
+                    <td> {{country.date}}</td>
+                    <td>{{country.confirmed}}</td>
+                    <td>{{country.recovered}}</td>
+                    <td>{{country.deaths}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->

@@ -1,0 +1,509 @@
+<div class="container">
+    <div class="row" id="searchCountry">
+        <div class="col-sm-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class=" input-group-text" id="basic-addon1"
+                        style="background-color: #101113; border-color: #0c0c0e"><i class="fas fa-search"
+                            style="color: #adb5bd;"></i></span>
+                </div>
+                <input id="inputCountry" type="text" class="form-control btn-lg" placeholder="Search country"
+                    aria-label="Username" aria-describedby="basic-addon1"
+                    style="background-color: #101113; color: #e9ecef; border-color: #0c0c0e;"
+                    [(ngModel)]="selectCountryName">
+                <button class="btn btn-primary" style="background-color: #00336b; color: #fff;"
+                    (click)="selectedCountryButton(selectCountryName)">Go</button>
+            </div>
+            <!-- <hr>
+            <div style="font-size: small; color: #343a40">*State Wise Details are available for India.*
+            </div> -->
+        </div>
+        <div class="col-sm-3">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"
+                    style="background-color: #101113; color: #e9ecef; border-color: #0c0c0e;">
+                    Country
+                </button>
+                <div *ngIf="countryModelBackup">
+                    <ul class="dropdown-menu menu-scroll" aria-labelledby="dropdownMenuButton" style="width: 100%;">
+                        <li *ngFor="let country of countryModelBackup.data" class="dropdown-item"
+                            (click)="selectedCountryDropDown($event)">
+                            {{country.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div style="font-size: small; color: #343a40">*State Wise Details are available for India.*
+            </div>
+        </div>
+    </div>
+    <div *ngIf="countryDetailsModel">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 style="color: #6c757d;"> {{selectCountryName}}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div *ngIf="selectCountryName;else other_content1">
+                <div *ngIf="countryDetailsModel">
+                    <div id="divinfo">
+                        <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                            Latest <span style="font-size: small; color: #0062cceb;">(Last 24 hrs.)</span>
+                        </h6>
+                        <div class="row" style="margin-top: 3%;">
+                            <div class="col-sm-4" id="today">
+                                <div class="card"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <h3 class="card-text" style="color: white;">{{confirmedToday}}
+                                        </h3>
+                                        <h6 class="card-title" style="color: firebrick">
+                                            Confirmed
+                                        </h6>
+                                        <!-- <span style="color: firebrick; font-size: medium;"
+                                        id="yestdiff">[{{prevDayConfirmed}}]</span> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4" id="today">
+                                <div class="card"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <h3 class="card-text" style="color: white">{{newRecovered}}</h3>
+                                        <h6 class="card-title" style="color: green">
+                                            Recovered
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4" id="today">
+                                <div class="card"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <h3 class="card-text" style="color: white">{{newDeath}}</h3>
+                                        <h6 class="card-title">
+                                            Deaths
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                            Total <span
+                                style="font-size: x-small; color: #0062cceb; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                                (Last updated on {{lastUpdatedOutput}})</span></h6>
+                        <div class="row">
+                            <div class="col-sm-6" id="card">
+                                <div class="card"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <h5 class="card-text" style="color: white">{{confirmed}}</h5>
+                                        <h6 class="card-title">
+                                            Confirmed
+                                        </h6>
+                                        <br>
+                                    </div>
+                                    <div class=" btn btn-danger"
+                                        style="width: 100%; background-color: rgba(255,7,58,.12549); border-color: rgba(255,7,58,.12549);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" id="card">
+                                <div class="card"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <h5 class="card-text" style="color: white">{{active}}</h5>
+                                        <h6 class="card-title">
+                                            Active</h6>
+                                        <br>
+                                    </div>
+                                    <div class="btn btn-active"
+                                        style="width: 100%; background-color: #007bff1f; border-color: #007bff1f;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 3%;" id="card">
+                                <div class="card"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <h5 class="card-text" style="color: white">{{recovered}}</h5>
+                                        <h6 class="card-title">
+                                            Recovered <br><span
+                                                style="font-size: small">({{recoveryRateOutput}}%)</span>
+                                        </h6>
+                                    </div>
+                                    <div class="btn btn-success"
+                                        style="width: 100%; background-color: #1e7e3447; border-color: #1e7e3447;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 3%;" id="card">
+                                <div class="card"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <h5 class="card-text" style="color: white">{{deaths}}</h5>
+                                        <h6 class="card-title">
+                                            Deaths <br><span style="font-size: small">({{deathRateOutput}}%)</span>
+                                        </h6>
+                                    </div>
+                                    <div class="btn btn-dark"
+                                        style="width: 100%; background-color: #6c757d61; border-color: #6c757d61;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #other_content1>
+                <div *ngIf="countryModelBackup">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 style="color: #adb5bd; font-size: 50px;" id="worldwide">
+                                <span id="W">W</span>
+                                <span id="O">o</span>
+                                <span id="R">r</span>
+                                <span id="L">l</span>
+                                <span id="D">d</span>
+                                <span id="WW">w</span>
+                                <span id="I">i</span>
+                                <span id="DD">d</span>
+                                <span id="E">e</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf="globalTimelineModel">
+                        <div class="row" id="worldtimelineRow">
+                            <div class="col-sm-6" id="worldtimeline">
+                                <div class="card"
+                                    style="height: 197px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions7"
+                                            style="width: 100%; height: 180px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" id="worldtimeline">
+                                <div class="card"
+                                    style="height: 197px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions8"
+                                            style="width: 100%; height: 180px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 2%;" id="worldtimeline">
+                                <div class="card"
+                                    style="height: 197px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions9"
+                                            style="width: 100%; height: 180px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 2%;" id="worldtimeline">
+                                <div class="card"
+                                    style="height: 197px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                    <div class="card-body">
+                                        <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions10"
+                                            style="width: 100%; height: 180px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+            </ng-template>
+        </div>
+        <diV class="col-sm-6">
+            <div *ngIf="selectCountryName;else other_content2">
+                <br>
+                <div *ngIf="countryDetailsModel">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                                Trend <span style="font-size: small; color: #0062cceb;">(Last {{limit}}
+                                    days.)</span>
+                            </h6>
+                        </div>
+                    </div>
+                    <div
+                        style="color: #adb5bd; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: small; margin-top: 2%;">
+                        Daily
+                    </div>
+                    <hr>
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <highcharts-chart id="chartOptions2" [Highcharts]="highcharts" [options]="chartOptions2"
+                                    style="width: 100%; height: 200px; display: block;">
+                                </highcharts-chart>
+                            </div>
+                            <div class="carousel-item">
+                                <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions3"
+                                    style="width: 100%; height: 200px; display: block;">
+                                </highcharts-chart>
+                            </div>
+                            <div class="carousel-item">
+                                <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions4"
+                                    style="width: 100%; height: 200px; display: block;">
+                                </highcharts-chart>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div style="color: #adb5bd; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: small;">
+                        Cumulative
+                    </div>
+                    <hr>
+                    <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions1"
+                        style="width: 100%; height: 250px; display: block;">
+                    </highcharts-chart>
+                </div>
+            </div>
+            <ng-template #other_content2>
+                <div *ngIf="countryModelBackup">
+                    <div>
+                        <br>
+                        <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                            Most
+                            affected countries
+                        </h6>
+                        <div *ngIf="topTenCountries">
+                            <div *ngFor="let country of topTenCountries; let ind = index">
+                                <div *ngFor="let data of country" style="color: white;">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="btn btn-dark" data-toggle="collapse"
+                                                href="#collapseExample{{ind}}" role="button" aria-expanded="false"
+                                                aria-controls="collapseExample" id="topTenCountriesButton">
+                                                <i class="fas fa-plus" style="font-size: small"></i><span
+                                                    style="margin-left: 2%;">{{data.name}}</span>
+                                                <span style="color: #f33f50; font-weight: bold; float: right;">
+                                                    {{data.latest_data.confirmed | number}}
+                                                </span>
+                                            </a>
+                                            <div class="collapse" id="collapseExample{{ind}}">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="card"
+                                                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title">
+                                                                    <h6 style="color: dimgray"> Cases Per
+                                                                        Million
+                                                                    </h6>
+                                                                </h6>
+                                                                <h5 style="color: #adb5bd;">
+                                                                    {{data.latest_data.calculated.cases_per_million_population | number}}
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12" style="margin-top: 1%;">
+                                                        <div class="card"
+                                                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e;">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title">
+                                                                    <h6 style="color: dimgray"> Death Rate
+                                                                    </h6>
+                                                                </h6>
+                                                                <h5 style="color: #adb5bd;">
+                                                                    {{data.latest_data.calculated.death_rate | number}}
+                                                                    %
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12" style="margin-top: 1%;">
+                                                        <div class="card"
+                                                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title">
+                                                                    <h6 style="color: dimgray"> Recovery Rate
+                                                                    </h6>
+                                                                </h6>
+                                                                <h5 style="color: #adb5bd;">
+                                                                    {{data.latest_data.calculated.recovery_rate | number}}
+                                                                    %
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row" id="topics">
+                            <div class="col-sm-12">
+                                <div *ngIf="newsModel">
+                                    <h5 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                                        Topics
+                                    </h5>
+                                    <hr>
+                                    <div *ngFor="let news of newsModel.articles;">
+                                        <a href="{{news.url}}" style="color: #0c0c0c;">
+                                            <div class="card"
+                                                style="margin-top: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                                <div class="card-body">
+                                                    <h4 style="color: #adb5bd; font-size: medium;">
+                                                        {{news.title}}</h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <br>
+                    </div>
+                </div>
+            </ng-template>
+        </diV>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div *ngIf="selectCountryName">
+                <div *ngIf="countryDetailsModel">
+                    <div
+                        *ngIf="selectCountryName == 'india' || selectCountryName == 'India' || selectCountryName == 'INDIA'">
+                        <hr>
+                        <div>
+                            <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                                State Wise
+                            </h6>
+                            <hr>
+
+                            <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions5"
+                                            style="width: 100%; height: 260px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions6"
+                                            style="width: 100%; height: 260px; display: block;">
+                                        </highcharts-chart>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls1" role="button"
+                                    data-slide="prev">
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls1" role="button"
+                                    data-slide="next">
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <!-- <hr> -->
+                            <button class="btn btn-primary"
+                                style="width: 100%; text-align: left; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
+                                State <span style=" float: right;">Cases</span>
+                            </button>
+                            <div *ngFor="let india of indiaModel.statewise; let ind = index">
+                                <div *ngIf="india.state != 'Total'">
+                                    <a id="indiaPatient" class="btn btn-dark" style="width: 100%; text-align: left;"
+                                        data-toggle="collapse" href="#collapseExample{{ind}}" aria-expanded="false"
+                                        aria-controls="collapseExample">
+                                        <i class="fas fa-plus" style="font-size: small"></i>
+                                        <span style="margin-left: 1%; color: #6c757d; font-size: 14px;">{{india.state}}
+                                        </span>
+                                        <span
+                                            style="float: right; color: #6c757d; font-size: 14px;">{{india.confirmed | number}}
+                                        </span>
+                                    </a>
+                                    <div class="collapse" id="collapseExample{{ind}}" style="margin-top: 1%;">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card"
+                                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <h5
+                                                                    style="color: #adb5bd; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
+                                                                    {{india.active | number}}
+                                                                </h5>
+                                                                <h6 class="card-title">
+                                                                    <h6
+                                                                        style="color: dimgray; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
+                                                                        Active
+                                                                    </h6>
+                                                                </h6>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <h5
+                                                                    style="color: #adb5bd; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
+                                                                    {{india.recovered | number}}
+                                                                </h5>
+                                                                <h6 class="card-title">
+                                                                    <h6
+                                                                        style="color: dimgray; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
+                                                                        Recovered
+                                                                    </h6>
+                                                                </h6>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <h5
+                                                                    style="color: #adb5bd; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
+                                                                    {{india.deaths | number}}
+                                                                </h5>
+                                                                <h6 class="card-title">
+                                                                    <h6
+                                                                        style="color: dimgray; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
+                                                                        Deceased
+                                                                    </h6>
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-sm-6">
+                                            <div class="card"
+                                                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">
+                                                        <h6 style="color: dimgray">Recovered
+                                                        </h6>
+                                                    </h6>
+                                                    <h5 style="color: #adb5bd;">
+                                                        {{india.recovered | number}}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+@media only screen and (max-width: 600px){
+    #divinfo{
+        margin-top: 3%;
+    }
+    .col-sm-4{
+        margin-top: 3%;
+    }
+    .col-sm-6{
+        width: 50%;
+    }
+}
+
+.card{
+    height: 120px;
+}

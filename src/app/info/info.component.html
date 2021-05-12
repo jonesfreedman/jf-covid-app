@@ -1,0 +1,162 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div *ngIf="event">
+            <br>
+            {{ getData(event) }}
+            <div id="divinfo">
+                <div class="row">
+                    <!-- <div class="col-sm-1">
+                    <div style="height: 40px; width: 40px;"><img src="{{flag}}" class="img-fluid"></div>
+                </div> -->
+                    <div class="col-sm-12">
+                        <h2 style="color: #6c757d;"> {{event}}</h2>
+                        <br>
+                        <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                            Total <span
+                                style="font-size: x-small; color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                                (Last updated on {{lastUpdatedOutput}})</span></h6>
+                    </div>
+                </div>
+                <!-- <hr> -->
+                <!-- <h6 style="color: #e9ecef; font-family: Verdana, Geneva, Tahoma, sans-serif">Summary
+            </h6> -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card"
+                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                            <div class="card-body">
+                                <h6 class="card-title" style="color: #d81c2e;">
+                                    Confirmed
+                                </h6>
+                                <h4 class="card-text" style="color: #d81c2e">{{confirmed}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card"
+                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                            <div class="card-body">
+                                <h6 class="card-title" style="color: dodgerblue;">
+                                    Active</h6>
+                                <h4 class="card-text" style="color: dodgerblue">{{active}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" style="margin-top: 3%;">
+                        <div class="card"
+                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                            <div class="card-body">
+                                <h6 class="card-title" style="color: #28a745;">
+                                    Recovered
+                                    <br><span style="font-size: small">({{recoveryRateOutput}} %)</span></h6>
+                                <h4 class="card-text" style="color: #28a745">{{recovered}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-4" style="margin-top: 3%;">
+                    <div class="card"
+                        style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                        <div class="card-body">
+                            <h6 class="card-title"
+                                style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">Recovery Rate
+                            </h6>
+                            <h4 class="card-text" style="color: dodgerblue">{{recoveryRateOutput}}<span
+                                    style="font-size: medium">%</span></h4>
+                        </div>
+                    </div>
+                </div> -->
+                    <div class="col-sm-6" style="margin-top: 3%;">
+                        <div class="card"
+                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                            <div class="card-body">
+                                <h6 class="card-title" style="color: #6c757d;">
+                                    Deaths
+                                    <br><span style="font-size: small">({{deathRateOutput}} %)</span></h6>
+                                <h4 class="card-text" style="color: #6c757d">{{deaths}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-4" style="margin-top: 3%;">
+                    <div class="card"
+                        style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: #0c0c0e">
+                        <div class="card-body">
+                            <h6 class="card-title"
+                                style="color: #575c61; font-family: Verdana, Geneva, Tahoma, sans-serif">Death Rate
+                            </h6>
+                            <h4 class="card-text" style="color: #575c61">{{deathRateOutput}}<span
+                                    style="font-size: medium">%</span></h4>
+                        </div>
+                    </div>
+                </div> -->
+                </div>
+                <br>
+                <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                    Latest <span style="font-size: small">(~ Last 24 hrs.)</span>
+                </h6>
+                <div class="row" style="margin-top: 3%;">
+                    <div class="col-sm-4">
+                        <div class="card" style="background-color: rgba(255,7,58,.12549)">
+                            <div class="card-body">
+                                <h6 class="card-title" style="color: #d81c2e;">
+                                    Confirmed
+                                </h6>
+                                <h4 class="card-text" style="color: #d81c2e">{{confirmedToday}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card" style="background-color: #1e7e3447">
+                            <div class="card-body">
+                                <h6 class="card-title" style="color: #28a745;">
+                                    Recovered
+                                </h6>
+                                <h4 class="card-text" style="color: #28a745">{{newRecovered}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card" style="background-color: #adb5bd29">
+                            <div class="card-body">
+                                <h6 class="card-title" style="color: #6c757d;">
+                                    Deaths</h6>
+                                <h4 class="card-text" style="color: #6c757d">{{newDeath}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <diV class="col-sm-6">
+        <div *ngIf="event">
+            <br>
+            <h6 style="color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif">
+                Timeline <span style="font-size: small">(Last 14 days.)</span>
+            </h6>
+            {{ getData(event) }}
+            <br>
+            <div *ngIf="countryDetailsModel">
+                <table class="table table-hover table-borderless table-dark table-sm"
+                    style="background-color: #0c0c0e; color: #6c757d;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Confirmed</th>
+                            <th scope="col">Recovered</th>
+                            <th scope="col">Death</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let country of countryDetailsModel.data.timeline | slice: 0: limit">
+                            <td> {{country.date}}</td>
+                            <td>{{country.confirmed}}</td>
+                            <td>{{country.recovered}}</td>
+                            <td>{{country.deaths}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </diV>
+</div>
